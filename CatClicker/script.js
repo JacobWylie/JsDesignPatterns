@@ -21,13 +21,11 @@
 const cat = document.querySelectorAll('.cat');
 let i = 0;
 
-function catClicker() {
-	count = this.parentNode.querySelector('.count');
-	i = Number(count.textContent) + 1;
-	i.toString();
-	count.textContent = i;
-}
-
 cat.forEach( cat => {
-	cat.querySelector('img').addEventListener('click', catClicker);
+	cat.querySelector('img').addEventListener('click', (function(i) {
+		return function() {
+			i++;
+			this.parentNode.querySelector('.count').textContent = i;
+		};
+	})(i));
 });
