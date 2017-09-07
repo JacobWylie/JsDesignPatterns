@@ -36,7 +36,7 @@
 ////////////////////////////////////////////////////////////////////////
 
 const catList = document.querySelectorAll('.catList');
-const cat = document.querySelectorAll('.cat');
+const cats = document.querySelectorAll('.cat');
 let i = 0;
 
 // click list to display cats
@@ -49,7 +49,7 @@ catList.forEach( catList => {
 })
 
 // counter for each cat on page
-cat.forEach( cat => {
+cats.forEach( cat => {
 	cat.querySelector('img').addEventListener('click', (function(i) {
 		return function() {
 			i++;
