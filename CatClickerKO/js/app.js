@@ -1,14 +1,10 @@
-const ViewModel = function() {
+const Cat = function() {
 	this.clickCount = ko.observable(0);
 	this.name = ko.observable('Toby');
 	this.imgSrc= ko.observable('img/cat1.jpg');
 	this.infant = ko.observable('Infant');
 	this.teen = ko.observable('Teen');
 	this.adult = ko.observable('Adult');
-
-	this.incrementCounter = function() {
-		this.clickCount(this.clickCount() + 1);
-	}
 
 	this.level = ko.computed(function() {
 		if(this.clickCount() < 10) {
@@ -19,6 +15,23 @@ const ViewModel = function() {
 			return this.adult()
 		}
 	}, this);
-}
+
+	this.nicknameArray = ko.observableArray([
+		{ name: 'Kitty' },
+		{ name: "Tabby" },
+		{ name: "Fluffy" }
+	]);
+};
+
+
+const ViewModel = function() {
+
+	this.currentCat = ko.observable( new Cat() );
+
+	this.incrementCounter = function() {
+		this.currentCat().clickCount(this.currentCat().clickCount() + 1);
+	}
+
+};
 
 ko.applyBindings(new ViewModel());
